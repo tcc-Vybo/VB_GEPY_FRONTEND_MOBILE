@@ -1,0 +1,9 @@
+{
+  "expo": {
+    "name": "gepy-mobile",
+    "slug": "gepy-mobile",
+    "version": "1.0.0",
+    "scheme": "gepy-mobile",
+    "plugins": ["expo-router"]
+  }
+}
