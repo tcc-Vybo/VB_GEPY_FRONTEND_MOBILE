@@ -45,9 +45,9 @@ export default function Routes() {
               style={{
                 borderRadius: 25,
                 borderWidth: focused ? 2 : 1,
-                paddingTop: focused ? 11 : 10,
+                paddingTop: 11,
                 paddingRight: focused ? 7.5 : 9,
-                paddingBottom: focused ? 9 : 10,
+                paddingBottom: 9,
                 paddingLeft: focused ? 12.5 : 11.5,
                 borderColor: '#6700b3',
               }}
