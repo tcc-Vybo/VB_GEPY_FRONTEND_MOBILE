@@ -7,8 +7,6 @@ export const SafeHeader = styled.SafeAreaView`
   height: 105px;
   align-items: center;
   justify-content: space-between;
-  position: absolute;
-  top: 0;
   padding: 5px 20px;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
