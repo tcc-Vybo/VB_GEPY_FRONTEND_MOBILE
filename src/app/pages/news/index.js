@@ -13,7 +13,6 @@ export default function News() {
       <ScrollView>
         <NewsCards cardTipe={1} />
         <NewsCards cardTipe={2} />
-        <NewsCards cardTipe={1} />
       </ScrollView>
 
       <StatusBar style="auto" />

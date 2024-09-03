@@ -13,7 +13,6 @@ import {
   LoginButtonText,
   LoginButtonView,
 } from './styles';
-import DropShadow from 'react-native-drop-shadow';
 import Home from "../app/pages/home/index"
 
 export default function Page() {

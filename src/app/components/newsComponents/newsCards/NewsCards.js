@@ -1,4 +1,4 @@
-import { StyleSheet, View } from "react-native";
+import { Text } from "react-native";
 import {
   CardNewsView,
   CardNewsViewLeft,
@@ -8,7 +8,7 @@ import {
   CardNewsImage,
 } from "./styles";
 import { useEffect, useState } from "react";
-import DropShadow from "react-native-drop-shadow";
+import { ShadowedView } from "react-native-fast-shadow";
 
 export default function NewsCards({ cardTipe }) {
   const [stateTest, setStateTest] = useState();
@@ -21,27 +21,29 @@ export default function NewsCards({ cardTipe }) {
     <>
       {stateTest === 1 ? (
         <CardNewsView>
-          <DropShadow
-            style={{
-              shadowColor: "#171717",
-              shadowOffset: { width: 0, height: 3 },
-              shadowOpacity: 0.4,
-              shadowRadius: 2,
-              elevation: 5, 
-            }}
-          >
-            <CardNewsImageViewLeft>
+          <CardNewsImageViewLeft>
+            <ShadowedView
+              style={{
+                shadowOpacity: 0.4,
+                shadowRadius: 12,
+                shadowOffset: {
+                  width: 5,
+                  height: 3,
+                },
+              }}
+            >
               <CardNewsImage
                 source={{ uri: "https://placehold.co/400.png?text=Image+1" }}
               />
-            </CardNewsImageViewLeft>
-          </DropShadow>
-          <CardNewsViewRight></CardNewsViewRight>
+            </ShadowedView>
+          </CardNewsImageViewLeft>
+          <CardNewsViewRight>
+            <Text>🙂</Text>
+          </CardNewsViewRight>
         </CardNewsView>
       ) : (
         <CardNewsView>
           <CardNewsViewLeft></CardNewsViewLeft>
-
           <CardNewsImageViewRight>
             <CardNewsImage
               source={{ uri: "https://placehold.co/400.png?text=Image+2" }}
@@ -52,14 +54,3 @@ export default function NewsCards({ cardTipe }) {
     </>
   );
 }
-
-const styles = StyleSheet.create({
-  shadowProp: {
-    shadowColor: "#171717",
-    shadowOffset: { width: 0, height: 3 },
-    shadowOpacity: 0.4,
-    shadowRadius: 2,
-    // Para Android:
-    elevation: 5, // Utilize apenas para Android
-  },
-});

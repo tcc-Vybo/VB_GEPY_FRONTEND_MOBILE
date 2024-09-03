@@ -1,5 +1,4 @@
 import styled from "styled-components/native";
-import DropShadow from "react-native-drop-shadow";
 
 const CardNewsView = styled.View `
     display: flex;
@@ -59,7 +58,7 @@ const CardNewsText = styled.Text`
 const CardNewsImage = styled.Image`
     width: 100%;
     height: 100%;
-    border-radius: 20px;
+    border-radius: 10px;
 `
 
 export {CardNewsView, CardNewsViewLeft, CardNewsImageViewLeft, CardNewsImageViewRight, CardNewsViewRight, CardNewsTitle, CardNewsText, CardNewsImage}
