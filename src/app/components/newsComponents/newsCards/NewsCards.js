@@ -1,4 +1,4 @@
-import { StyleSheet, Text } from "react-native";
+import { StyleSheet, Text } from 'react-native';
 import {
   CardNewsView,
   CardNewsViewLeft,
@@ -6,35 +6,37 @@ import {
   CardNewsImageViewLeft,
   CardNewsImageViewRight,
   CardNewsImage,
-} from "./styles";
-import { useEffect, useState } from "react";
+} from './styles';
+import { useEffect, useState } from 'react';
 
 export default function NewsCards({ cardTipe }) {
   const [stateTest, setStateTest] = useState();
 
   useEffect(() => {
     setStateTest(cardTipe);
-  }, [cardTipe]);
+  }, []);
 
   return (
     <>
-      {stateTest === 1 ? (
+      {cardTipe % 2 == 1 ? (
         <CardNewsView>
           <CardNewsImageViewLeft style={styles.boxWithShadow}>
             <CardNewsImage
-              source={{ uri: "https://placehold.co/400.png?text=Image+1" }}
+              source={{ uri: 'https://placehold.co/400.png?text=Image+1' }}
             />
           </CardNewsImageViewLeft>
           <CardNewsViewRight style={styles.boxWithShadow}>
-            <Text>🙂</Text>
+            <Text>1</Text>
           </CardNewsViewRight>
         </CardNewsView>
       ) : (
         <CardNewsView>
-          <CardNewsViewLeft></CardNewsViewLeft>
+          <CardNewsViewLeft>
+            <Text>2</Text>
+          </CardNewsViewLeft>
           <CardNewsImageViewRight>
             <CardNewsImage
-              source={{ uri: "https://placehold.co/400.png?text=Image+2" }}
+              source={{ uri: 'https://placehold.co/400.png?text=Image+2' }}
             />
           </CardNewsImageViewRight>
         </CardNewsView>
@@ -45,10 +47,10 @@ export default function NewsCards({ cardTipe }) {
 
 const styles = StyleSheet.create({
   boxWithShadow: {
-    shadowColor: "#171717",
+    shadowColor: '#171717',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.5,
     shadowRadius: 2,
-    elevation: 5,
+    elevation: 7.5,
   },
 });
