@@ -1,4 +1,4 @@
-import { Text } from "react-native";
+import { StyleSheet, Text } from "react-native";
 import {
   CardNewsView,
   CardNewsViewLeft,
@@ -8,7 +8,6 @@ import {
   CardNewsImage,
 } from "./styles";
 import { useEffect, useState } from "react";
-import { ShadowedView } from "react-native-fast-shadow";
 
 export default function NewsCards({ cardTipe }) {
   const [stateTest, setStateTest] = useState();
@@ -21,23 +20,12 @@ export default function NewsCards({ cardTipe }) {
     <>
       {stateTest === 1 ? (
         <CardNewsView>
-          <CardNewsImageViewLeft>
-            <ShadowedView
-              style={{
-                shadowOpacity: 0.4,
-                shadowRadius: 12,
-                shadowOffset: {
-                  width: 5,
-                  height: 3,
-                },
-              }}
-            >
-              <CardNewsImage
-                source={{ uri: "https://placehold.co/400.png?text=Image+1" }}
-              />
-            </ShadowedView>
+          <CardNewsImageViewLeft style={styles.boxWithShadow}>
+            <CardNewsImage
+              source={{ uri: "https://placehold.co/400.png?text=Image+1" }}
+            />
           </CardNewsImageViewLeft>
-          <CardNewsViewRight>
+          <CardNewsViewRight style={styles.boxWithShadow}>
             <Text>🙂</Text>
           </CardNewsViewRight>
         </CardNewsView>
@@ -54,3 +42,13 @@ export default function NewsCards({ cardTipe }) {
     </>
   );
 }
+
+const styles = StyleSheet.create({
+  boxWithShadow: {
+    shadowColor: "#171717",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.5,
+    shadowRadius: 2,
+    elevation: 5,
+  },
+});
