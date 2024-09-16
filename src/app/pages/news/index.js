@@ -10,7 +10,7 @@ export default function News() {
     <View style={styles.container}>
       <UserHeader />
 
-      <ScrollView>
+      <ScrollView style={{paddingTop: 5, paddingBottom: 5}}>
         <NewsCards cardTipe={1} />
         <NewsCards cardTipe={2} />
       </ScrollView>

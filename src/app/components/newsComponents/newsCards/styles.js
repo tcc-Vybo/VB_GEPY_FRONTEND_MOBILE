@@ -38,6 +38,7 @@ const CardNewsImageViewLeft = styled.View `
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    z-index: 1;
     width: 80%;
     height: 100%;
 `
@@ -46,6 +47,7 @@ const CardNewsImageViewRight = styled.View `
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    z-index: 1;
     width: 80%;
     height: 100%;
 `

@@ -20,19 +20,18 @@ export default function NewsCards({ cardTipe }) {
     <>
       {stateTest === 1 ? (
         <CardNewsView>
-          <CardNewsImageViewLeft style={styles.boxWithShadow}>
-            <CardNewsImage
-              source={{ uri: "https://placehold.co/400.png?text=Image+1" }}
-            />
-          </CardNewsImageViewLeft>
+            <CardNewsImageViewLeft style={styles.boxWithShadow}>
+              <CardNewsImage
+                source={{ uri: "https://placehold.co/400.png?text=Image+1" }}
+              />
+            </CardNewsImageViewLeft>
           <CardNewsViewRight style={styles.boxWithShadow}>
-            <Text>🙂</Text>
           </CardNewsViewRight>
         </CardNewsView>
       ) : (
         <CardNewsView>
-          <CardNewsViewLeft></CardNewsViewLeft>
-          <CardNewsImageViewRight>
+          <CardNewsViewLeft style={styles.boxWithShadow}></CardNewsViewLeft>
+          <CardNewsImageViewRight style={styles.boxWithShadow}>
             <CardNewsImage
               source={{ uri: "https://placehold.co/400.png?text=Image+2" }}
             />
@@ -45,10 +44,11 @@ export default function NewsCards({ cardTipe }) {
 
 const styles = StyleSheet.create({
   boxWithShadow: {
-    shadowColor: "#171717",
+    shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.5,
-    shadowRadius: 2,
+    shadowRadius: 5,
+
     elevation: 5,
-  },
+  }
 });

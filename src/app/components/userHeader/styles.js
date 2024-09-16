@@ -7,7 +7,6 @@ export const SafeHeader = styled.SafeAreaView`
   height: 105px;
   align-items: center;
   justify-content: space-between;
-  padding: 5px 20px;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
 `;
@@ -21,9 +20,11 @@ export const LoggedUser = styled.View`
 export const LoggedUserName = styled.Text`
   font-weight: bold;
   color: #6700b3;
+  margin-right: 4%;
 `;
 
 export const Logo = styled.Image`
   width: 84px;
   height: 67px;
+  margin-left: 4%;
 `;
