@@ -4,6 +4,7 @@ import Agenda from './pages/agenda';
 import Boletim from './pages/boletim';
 import News from './pages/news';
 import Tarefas from './pages/tarefas';
+import { Platform } from 'react-native';
 
 const Tab = createBottomTabNavigator();
 
@@ -15,7 +16,6 @@ export default function Routes() {
         tabBarInactiveTintColor: '#8300E4',
         tabBarStyle: {
           height: 80,
-          borderTopWidth: 0,
           borderTopLeftRadius: 20,
           borderTopRightRadius: 20,
           paddingTop: 10,
@@ -43,12 +43,12 @@ export default function Routes() {
               size={23}
               color={'#6700B3'}
               style={{
-                borderRadius: 25,
+                borderRadius: Platform.OS === 'ios' ? 22 : 25,
                 borderWidth: focused ? 2 : 1,
-                paddingTop: 11,
-                paddingRight: focused ? 7.5 : 9,
-                paddingBottom: 9,
-                paddingLeft: focused ? 12.5 : 11.5,
+                paddingTop: 10,
+                paddingRight: 11,
+                paddingBottom: 10,
+                paddingLeft: 11,
                 borderColor: '#6700b3',
               }}
             />
@@ -59,6 +59,7 @@ export default function Routes() {
         },
         tabBarIconStyle: {
           alignItems: 'center',
+          justifyContent: 'center'
         },
       })}
       initialRouteName="news"
