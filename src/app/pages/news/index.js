@@ -5,7 +5,7 @@ import UserHeader from '../../components/userHeader';
 
 import NewsCards from '../../components/newsCards/NewsCards';
 
-const cards = [1, 2, 3, 4, 5, 6, 7];
+const cards = [1, 2, 3];
 
 export default function News() {
   return (

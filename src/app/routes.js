@@ -3,7 +3,6 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Agenda from './pages/agenda';
 import Boletim from './pages/boletim';
 import News from './pages/news';
-import Tarefas from './pages/tarefas';
 import { Platform } from 'react-native';
 
 const Tab = createBottomTabNavigator();
@@ -83,14 +82,6 @@ export default function Routes() {
       <Tab.Screen
         name="boletim"
         component={Boletim}
-        options={{
-          headerShown: false,
-          tabBarLabelStyle: { fontWeight: 'bold' },
-        }}
-      />
-      <Tab.Screen
-        name="tarefas"
-        component={Tarefas}
         options={{
           headerShown: false,
           tabBarLabelStyle: { fontWeight: 'bold' },
