@@ -2,10 +2,12 @@ import { Ionicons } from '@expo/vector-icons';
 import React from 'react';
 import LogoPng from '../../assets/Logo.png';
 import { LoggedUser, LoggedUserName, Logo, SafeHeader } from './styles';
+import { StyleSheet } from 'react-native';
+
 
 export default function UserHeader() {
   return (
-    <SafeHeader>
+    <SafeHeader style={styles.boxWithShadow}>
       <Logo source={LogoPng} />
       <LoggedUser>
         <LoggedUserName>Yara Mendes</LoggedUserName>
@@ -18,3 +20,12 @@ export default function UserHeader() {
     </SafeHeader>
   );
 }
+const styles = StyleSheet.create({
+  boxWithShadow: {
+    shadowColor: "#171717",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.5,
+    shadowRadius: 2,
+    elevation: 20,
+  },
+});

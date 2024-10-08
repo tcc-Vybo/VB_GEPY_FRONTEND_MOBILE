@@ -1,19 +1,26 @@
-import { StatusBar } from "expo-status-bar";
-import React from "react";
-import { StyleSheet, Text, View, ScrollView } from "react-native";
-import UserHeader from "../../components/userHeader";
+import { StatusBar } from 'expo-status-bar';
+import React from 'react';
+import { StyleSheet, View, ScrollView, FlatList, Button } from 'react-native';
+import UserHeader from '../../components/userHeader';
 
-import NewsCards from "../../components/newsComponents/newsCards/NewsCards";
+import NewsCards from '../../components/newsComponents/newsCards/NewsCards';
+
+const cards = [1, 2, 3, 4, 5, 6, 7];
 
 export default function News() {
   return (
     <View style={styles.container}>
       <UserHeader />
 
-      <ScrollView>
-        <NewsCards cardTipe={1} />
-        <NewsCards cardTipe={2} />
-        <NewsCards cardTipe={1} />
+      <ScrollView style={{paddingTop: 5, paddingBottom: 5}}>
+        {cards.map((card) => {
+          return (
+            <NewsCards
+              key={card}
+              cardTipe={card}
+            />
+          );
+        })}
       </ScrollView>
 
       <StatusBar style="auto" />
@@ -24,12 +31,12 @@ export default function News() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
-    backgroundColor: "#D7A1FF",
+    alignItems: 'center',
+    backgroundColor: '#D7A1FF',
     paddingBottom: 20,
   },
   scrollView: {
-    backgroundColor: "#000",
+    backgroundColor: '#000',
     width: 200,
     height: 400,
   },

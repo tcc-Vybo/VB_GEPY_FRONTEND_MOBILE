@@ -1,4 +1,4 @@
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, Text } from 'react-native';
 import {
   CardNewsView,
   CardNewsViewLeft,
@@ -6,45 +6,37 @@ import {
   CardNewsImageViewLeft,
   CardNewsImageViewRight,
   CardNewsImage,
-} from "./styles";
-import { useEffect, useState } from "react";
-import DropShadow from "react-native-drop-shadow";
+} from './styles';
+import { useEffect, useState } from 'react';
 
 export default function NewsCards({ cardTipe }) {
   const [stateTest, setStateTest] = useState();
 
   useEffect(() => {
     setStateTest(cardTipe);
-  }, [cardTipe]);
+  }, []);
 
   return (
     <>
-      {stateTest === 1 ? (
+      {cardTipe % 2 == 1 ? (
         <CardNewsView>
-          <DropShadow
-            style={{
-              shadowColor: "#171717",
-              shadowOffset: { width: 0, height: 3 },
-              shadowOpacity: 0.4,
-              shadowRadius: 2,
-              elevation: 5, 
-            }}
-          >
-            <CardNewsImageViewLeft>
+            <CardNewsImageViewLeft style={styles.boxWithShadow}>
               <CardNewsImage
-                source={{ uri: "https://placehold.co/400.png?text=Image+1" }}
+                source={{ uri: 'https://placehold.co/400.png?text=Image+1' }}
               />
             </CardNewsImageViewLeft>
-          </DropShadow>
-          <CardNewsViewRight></CardNewsViewRight>
+          <CardNewsViewRight style={styles.boxWithShadow}>
+            <Text>1</Text>
+          </CardNewsViewRight>
         </CardNewsView>
       ) : (
         <CardNewsView>
-          <CardNewsViewLeft></CardNewsViewLeft>
-
-          <CardNewsImageViewRight>
+          <CardNewsViewLeft style={styles.boxWithShadow}>
+            <Text>2</Text>
+          </CardNewsViewLeft>
+          <CardNewsImageViewRight style={styles.boxWithShadow}>
             <CardNewsImage
-              source={{ uri: "https://placehold.co/400.png?text=Image+2" }}
+              source={{ uri: 'https://placehold.co/400.png?text=Image+2' }}
             />
           </CardNewsImageViewRight>
         </CardNewsView>
@@ -54,12 +46,12 @@ export default function NewsCards({ cardTipe }) {
 }
 
 const styles = StyleSheet.create({
-  shadowProp: {
-    shadowColor: "#171717",
-    shadowOffset: { width: 0, height: 3 },
-    shadowOpacity: 0.4,
-    shadowRadius: 2,
-    // Para Android:
-    elevation: 5, // Utilize apenas para Android
-  },
+  boxWithShadow: {
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.5,
+    shadowRadius: 5,
+
+    elevation: 7.5,
+  }
 });
