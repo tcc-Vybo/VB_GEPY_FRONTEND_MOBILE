@@ -3,7 +3,7 @@ import React from 'react';
 import { StyleSheet, View, ScrollView, FlatList, Button } from 'react-native';
 import UserHeader from '../../components/userHeader';
 
-import NewsCards from '../../components/newsComponents/newsCards/NewsCards';
+import NewsCards from '../../components/newsCards/NewsCards';
 
 const cards = [1, 2, 3, 4, 5, 6, 7];
 

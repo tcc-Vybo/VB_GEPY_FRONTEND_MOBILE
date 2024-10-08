@@ -16,7 +16,6 @@ export default function Routes() {
         tabBarInactiveTintColor: '#8300E4',
         tabBarStyle: {
           height: 80,
-          borderTopWidth: 0,
           borderTopLeftRadius: 20,
           borderTopRightRadius: 20,
           paddingTop: 10,
