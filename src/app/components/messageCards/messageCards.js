@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { StyleSheet } from "react-native";
+import { StyleSheet, Text } from "react-native";
 import { ParentTouchableOpacity, ParentTouchableOpacityFooter } from './styles'
 
 
-export default function MessageCards() {
+export default function MessageCards({id}) {
 
 const [statePressed, setStatePressed] = useState(false)
 

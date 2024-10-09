@@ -4,7 +4,7 @@ const ParentTouchableOpacity = styled.TouchableOpacity`
     width: 100%;
     height: 125px;
     background-color: white;
-    /* background-color: #6700B3; */
+    margin-top: 10px;
     border-radius: 10px;
 `
 const ParentTouchableOpacityFooter = styled.View`
