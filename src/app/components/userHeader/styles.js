@@ -9,6 +9,7 @@ export const SafeHeader = styled.SafeAreaView`
   justify-content: space-between;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
+  z-index: 1;
 `;
 
 export const LoggedUser = styled.View`
