@@ -1,5 +1,7 @@
 import styled from "styled-components/native";
 
+//TOUCHABLE OPACITY STYLING
+
 const ParentTouchableOpacity = styled.TouchableOpacity`
   width: 100%;
   height: 125px;
@@ -7,6 +9,7 @@ const ParentTouchableOpacity = styled.TouchableOpacity`
   margin-top: 10px;
   border-radius: 10px;
 `;
+
 const ParentTouchableOpacityFooter = styled.View`
   height: 10%;
   width: 100%;
@@ -15,6 +18,9 @@ const ParentTouchableOpacityFooter = styled.View`
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
 `;
+
+
+// MODAL STYLING
 
 const ModalBackgroundView = styled.View`
   flex: 1;
@@ -26,7 +32,6 @@ const ModalBackgroundView = styled.View`
 const ModalBackgroundViewContent = styled.View`
   width: 80%;
   height: 40%;
-  gap: 10px;
   background-color: white;
   border-radius: 10px;
   display: flex;
@@ -37,7 +42,46 @@ const ModalBackgroundViewContent = styled.View`
 
 const ModalBackgroundViewContentTop = styled.View`
     width: 90%;
-    height: 70%;
+    height: 76%;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+`
+
+const ModalBackgroundViewContentTopUpper = styled.View`
+    width: 100%;
+    height: 20%;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+`
+
+const ModalBackgroundViewContentTopUpperLeft = styled.View`
+    width: 30%;
+    height: 100%;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+`
+
+const ModalBackgroundViewContentTopUpperRight = styled.View`
+    width: 70%;
+    height: 100%;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+`
+
+const ModalBackgroundViewContentTopLower = styled.View`
+    width: 100%;
+    height: 80%;
     border-radius: 10px;
     display: flex;
     flex-direction: row;
@@ -59,11 +103,23 @@ const ModalBackgroundViewContentText = styled.Text`
   font-size: 16px;
 `;
 
-const ModalBackgroundViewContentTouchableOpacity = styled.TouchableOpacity`
-  width: 40%;
+const ModalBackgroundViewContentTouchableOpacityConfirm = styled.TouchableOpacity`
+  width: 50%;
   height: 30px;
-  border-radius: 10px;
-  border: 1px;
+  border-radius: 7px;
+  border: 2px green;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+`;
+
+const ModalBackgroundViewContentTouchableOpacityCancel = styled.TouchableOpacity`
+  width: 30%;
+  height: 30px;
+  border-radius: 7px;
+  border: 2px red;
   background-color: white;
   display: flex;
   justify-content: center;
@@ -77,7 +133,12 @@ export {
   ModalBackgroundView,
   ModalBackgroundViewContent,
   ModalBackgroundViewContentText,
-  ModalBackgroundViewContentTouchableOpacity,
+  ModalBackgroundViewContentTouchableOpacityConfirm,
+  ModalBackgroundViewContentTouchableOpacityCancel,
   ModalBackgroundViewContentTop,
+  ModalBackgroundViewContentTopUpper,
+  ModalBackgroundViewContentTopUpperLeft,
+  ModalBackgroundViewContentTopUpperRight,
+  ModalBackgroundViewContentTopLower,
   ModalBackgroundViewContentBottom
 };

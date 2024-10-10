@@ -27,6 +27,7 @@ const ChildrenViewContentFlatList = styled.FlatList`
     padding: 2%;
     display: flex;
     flex-direction: column;
+    border-radius: 10px;
 `
 
 export {ParentView, ParentViewContent, ChildrenViewContent, ChildrenViewContentFlatList}

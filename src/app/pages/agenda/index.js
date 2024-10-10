@@ -13,13 +13,32 @@ export default function Agenda() {
   const testArray = [
     {
       id: 1,
+      date: 23,
+      title: "Prova",
+      description: "No dia marcado na mensagem será realizada uma prova",
+      sender: "Gustavo Henrique",
     },
     {
       id: 2,
+      date: 24,
+      title: "Prova",
+      description: "No dia marcado na mensagem será realizada uma prova",
+      sender: "Gustavo Henrique",
     },
     {
       id: 3,
-    }
+      date: 25,
+      title: "Prova",
+      description: "No dia marcado na mensagem será realizada uma prova",
+      sender: "Gustavo Henrique",
+    },
+    {
+      id: 4,
+      date: 25,
+      title: "Prova",
+      description: "No dia marcado na mensagem será realizada uma prova",
+      sender: "Gustavo Henrique",
+    },
   ];
 
   return (
@@ -30,7 +49,15 @@ export default function Agenda() {
           <ChildrenViewContentFlatList
             data={testArray}
             keyExtractor={(item) => item.id.toString()}
-            renderItem={({ item }) => <MessageCards id={item.id} />}
+            renderItem={({ item }) => (
+              <MessageCards
+                id={item.id}
+                date={item.date}
+                title={item.title}
+                description={item.description}
+                sender={item.sender}
+              />
+            )}
           />
         </ChildrenViewContent>
       </ParentViewContent>

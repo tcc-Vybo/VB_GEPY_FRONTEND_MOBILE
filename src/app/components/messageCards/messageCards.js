@@ -13,47 +13,80 @@ import {
   ModalBackgroundView,
   ModalBackgroundViewContent,
   ModalBackgroundViewContentText,
-  ModalBackgroundViewContentTouchableOpacity,
+  ModalBackgroundViewContentTouchableOpacityConfirm,
+  ModalBackgroundViewContentTouchableOpacityCancel,
   ModalBackgroundViewContentTop,
+  ModalBackgroundViewContentTopUpper,
+  ModalBackgroundViewContentTopUpperLeft,
+  ModalBackgroundViewContentTopUpperRight,
+  ModalBackgroundViewContentTopLower,
   ModalBackgroundViewContentBottom,
 } from "./styles";
 
-export default function MessageCards({ id }) {
+export default function MessageCards({ date, title, description, sender }) {
   const [statePressed, setStatePressed] = useState(false);
+  const [stateCallModal, setStateCallModal] = useState(false);
   const closeModal = () => {
-    setStatePressed(false);
+    setStateCallModal(false);
   };
   return (
     <ParentTouchableOpacity
       style={styles.boxWithShadow}
-      onPressIn={() => {
-        setStatePressed(true);
+      onPress={() => {
+        setStateCallModal(true);
       }}
     >
       <Modal
-        visible={statePressed === true ? true : false}
+        visible={stateCallModal === true ? true : false}
         animationType="fade"
         onRequestClose={closeModal}
         transparent={true}
       >
         <ModalBackgroundView>
           <ModalBackgroundViewContent>
-            <ModalBackgroundViewContentTop>
-              <ModalBackgroundViewContentText>
-                This is an alert message!
-              </ModalBackgroundViewContentText>
+            <ModalBackgroundViewContentTop style={styles.boxWithShadow}>
+              <ModalBackgroundViewContentTopUpper style={styles.boxWithShadow}>
+                <ModalBackgroundViewContentTopUpperLeft>
+                  <ModalBackgroundViewContentText>
+                    {date}
+                  </ModalBackgroundViewContentText>
+                </ModalBackgroundViewContentTopUpperLeft>
+                <ModalBackgroundViewContentTopUpperRight>
+                  <ModalBackgroundViewContentText>
+                    {title}
+                  </ModalBackgroundViewContentText>
+                  <ModalBackgroundViewContentText>
+                    {sender}
+                  </ModalBackgroundViewContentText>
+                </ModalBackgroundViewContentTopUpperRight>
+              </ModalBackgroundViewContentTopUpper>
+              <ModalBackgroundViewContentTopLower style={styles.boxWithShadow}>
+                <ModalBackgroundViewContentText>
+                  {description}
+                </ModalBackgroundViewContentText>
+              </ModalBackgroundViewContentTopLower>
             </ModalBackgroundViewContentTop>
             <ModalBackgroundViewContentBottom>
-              <ModalBackgroundViewContentTouchableOpacity onPress={closeModal}>
+              <ModalBackgroundViewContentTouchableOpacityConfirm
+                onPress={() => {
+                  closeModal();
+                  setStatePressed(true);
+                }}
+              >
                 <ModalBackgroundViewContentText>
-                  OK
+                  Confirmar
                 </ModalBackgroundViewContentText>
-              </ModalBackgroundViewContentTouchableOpacity>
-              <ModalBackgroundViewContentTouchableOpacity onPress={closeModal}>
+              </ModalBackgroundViewContentTouchableOpacityConfirm>
+              <ModalBackgroundViewContentTouchableOpacityCancel
+                onPress={() => {
+                  closeModal();
+                  setStatePressed(false);
+                }}
+              >
                 <ModalBackgroundViewContentText>
-                  Cancel
+                  Cancelar
                 </ModalBackgroundViewContentText>
-              </ModalBackgroundViewContentTouchableOpacity>
+              </ModalBackgroundViewContentTouchableOpacityCancel>
             </ModalBackgroundViewContentBottom>
           </ModalBackgroundViewContent>
         </ModalBackgroundView>
