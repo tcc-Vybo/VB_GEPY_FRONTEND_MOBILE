@@ -1,21 +1,66 @@
 import React, { useState } from "react";
-import { StyleSheet, Text } from "react-native";
-import { ParentTouchableOpacity, ParentTouchableOpacityFooter } from './styles'
+import {
+  StyleSheet,
+  Modal,
+  Button,
+  View,
+  Text,
+  TouchableOpacity,
+} from "react-native";
+import {
+  ParentTouchableOpacity,
+  ParentTouchableOpacityFooter,
+  ModalBackgroundView,
+  ModalBackgroundViewContent,
+  ModalBackgroundViewContentText,
+  ModalBackgroundViewContentTouchableOpacity,
+  ModalBackgroundViewContentTop,
+  ModalBackgroundViewContentBottom,
+} from "./styles";
 
-
-export default function MessageCards({id}) {
-
-const [statePressed, setStatePressed] = useState(false)
-
-
+export default function MessageCards({ id }) {
+  const [statePressed, setStatePressed] = useState(false);
+  const closeModal = () => {
+    setStatePressed(false);
+  };
   return (
     <ParentTouchableOpacity
-        style={styles.boxWithShadow}
-        onPressIn={() => {
-            setStatePressed(true)
-        }}
+      style={styles.boxWithShadow}
+      onPressIn={() => {
+        setStatePressed(true);
+      }}
     >
-        <ParentTouchableOpacityFooter style={[ statePressed && styles.buttonPressed]}/>
+      <Modal
+        visible={statePressed === true ? true : false}
+        animationType="fade"
+        onRequestClose={closeModal}
+        transparent={true}
+      >
+        <ModalBackgroundView>
+          <ModalBackgroundViewContent>
+            <ModalBackgroundViewContentTop>
+              <ModalBackgroundViewContentText>
+                This is an alert message!
+              </ModalBackgroundViewContentText>
+            </ModalBackgroundViewContentTop>
+            <ModalBackgroundViewContentBottom>
+              <ModalBackgroundViewContentTouchableOpacity onPress={closeModal}>
+                <ModalBackgroundViewContentText>
+                  OK
+                </ModalBackgroundViewContentText>
+              </ModalBackgroundViewContentTouchableOpacity>
+              <ModalBackgroundViewContentTouchableOpacity onPress={closeModal}>
+                <ModalBackgroundViewContentText>
+                  Cancel
+                </ModalBackgroundViewContentText>
+              </ModalBackgroundViewContentTouchableOpacity>
+            </ModalBackgroundViewContentBottom>
+          </ModalBackgroundViewContent>
+        </ModalBackgroundView>
+      </Modal>
+      <ParentTouchableOpacityFooter
+        style={[statePressed && styles.buttonPressed]}
+      />
     </ParentTouchableOpacity>
   );
 }
@@ -28,7 +73,7 @@ const styles = StyleSheet.create({
     shadowRadius: 5,
     elevation: 7.5,
   },
-  buttonPressed:{
-    backgroundColor: 'green'
+  buttonPressed: {
+    backgroundColor: "green",
   },
 });

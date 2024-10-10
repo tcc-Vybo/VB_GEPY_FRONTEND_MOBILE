@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet } from "react-native";
+import { StyleSheet, Modal } from "react-native";
 import UserHeader from "../../components/userHeader";
 import {
   ParentViewContent,
@@ -19,13 +19,7 @@ export default function Agenda() {
     },
     {
       id: 3,
-    },
-    {
-      id: 4,
-    },
-    {
-      id: 5,
-    },
+    }
   ];
 
   return (
