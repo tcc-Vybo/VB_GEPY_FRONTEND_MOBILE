@@ -2,17 +2,17 @@ import React, { useState } from "react";
 import {
   StyleSheet,
   Modal,
-  Button,
-  View,
-  Text,
-  TouchableOpacity,
 } from "react-native";
 import {
   ParentTouchableOpacity,
-  ParentTouchableOpacityFooter,
+  ParentTouchableOpacitySide,
   ModalBackgroundView,
   ModalBackgroundViewContent,
   ModalBackgroundViewContentText,
+  ModalBackgroundViewContentTitleSenderText,
+  ModalBackgroundViewContentTitleNameText,
+  ModalBackgroundViewContentTitleDateText,
+  ModalBackgroundViewContentDescriptionText,
   ModalBackgroundViewContentTouchableOpacityConfirm,
   ModalBackgroundViewContentTouchableOpacityCancel,
   ModalBackgroundViewContentTop,
@@ -45,25 +45,25 @@ export default function MessageCards({ date, title, description, sender }) {
         <ModalBackgroundView>
           <ModalBackgroundViewContent>
             <ModalBackgroundViewContentTop style={styles.boxWithShadow}>
-              <ModalBackgroundViewContentTopUpper style={styles.boxWithShadow}>
+              <ModalBackgroundViewContentTopUpper>
                 <ModalBackgroundViewContentTopUpperLeft>
-                  <ModalBackgroundViewContentText>
+                  <ModalBackgroundViewContentTitleDateText>
                     {date}
-                  </ModalBackgroundViewContentText>
+                  </ModalBackgroundViewContentTitleDateText>
                 </ModalBackgroundViewContentTopUpperLeft>
                 <ModalBackgroundViewContentTopUpperRight>
-                  <ModalBackgroundViewContentText>
+                  <ModalBackgroundViewContentTitleNameText>
                     {title}
-                  </ModalBackgroundViewContentText>
-                  <ModalBackgroundViewContentText>
+                  </ModalBackgroundViewContentTitleNameText>
+                  <ModalBackgroundViewContentTitleSenderText>
                     {sender}
-                  </ModalBackgroundViewContentText>
+                  </ModalBackgroundViewContentTitleSenderText>
                 </ModalBackgroundViewContentTopUpperRight>
               </ModalBackgroundViewContentTopUpper>
-              <ModalBackgroundViewContentTopLower style={styles.boxWithShadow}>
-                <ModalBackgroundViewContentText>
+              <ModalBackgroundViewContentTopLower>
+                <ModalBackgroundViewContentDescriptionText>
                   {description}
-                </ModalBackgroundViewContentText>
+                </ModalBackgroundViewContentDescriptionText>
               </ModalBackgroundViewContentTopLower>
             </ModalBackgroundViewContentTop>
             <ModalBackgroundViewContentBottom>
@@ -91,7 +91,7 @@ export default function MessageCards({ date, title, description, sender }) {
           </ModalBackgroundViewContent>
         </ModalBackgroundView>
       </Modal>
-      <ParentTouchableOpacityFooter
+      <ParentTouchableOpacitySide
         style={[statePressed && styles.buttonPressed]}
       />
     </ParentTouchableOpacity>
@@ -104,9 +104,9 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 0 },
     shadowOpacity: 0.5,
     shadowRadius: 5,
-    elevation: 7.5,
+    elevation: 7
   },
   buttonPressed: {
-    backgroundColor: "green",
+    backgroundColor: "#6f09ba",
   },
 });

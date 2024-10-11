@@ -1,5 +1,5 @@
-import React from "react";
-import { StyleSheet, Modal } from "react-native";
+import React, { useEffect } from "react";
+import { StyleSheet } from "react-native";
 import UserHeader from "../../components/userHeader";
 import {
   ParentViewContent,
@@ -8,8 +8,38 @@ import {
   ChildrenViewContentFlatList,
 } from "./styles";
 import MessageCards from "../../components/messageCards/messageCards";
+import { useIsFocused } from "@react-navigation/native";
+import axios from "axios";
 
 export default function Agenda() {
+  const focused = useIsFocused();
+
+  const handleGetMessages = () => {
+    const urlGetMessages = `https://vb-gepy-backend-web.onrender.com/recado-turma`
+
+    axios({
+      method: "get",
+      url: urlGetMessages,
+    }).then(function (response) {
+      console.log(response.data);
+    });
+    
+  }
+
+  const isCurrtentFocusedValidation = () => {
+    if (focused === true) {
+      handleGetMessages()
+    }
+  }
+
+  const testFunction = () => {
+    console.log("CHAMOU!");
+  };
+
+  useEffect(() => {
+    isCurrtentFocusedValidation();
+  }, [focused]);
+
   const testArray = [
     {
       id: 1,
@@ -71,6 +101,6 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 0 },
     shadowOpacity: 0.5,
     shadowRadius: 5,
-    elevation: 7.5,
+    elevation: 7
   },
 });

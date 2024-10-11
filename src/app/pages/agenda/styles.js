@@ -14,9 +14,9 @@ const ParentViewContent = styled.View `
     flex-direction: column;
     align-items: center;
 `
-const ChildrenViewContent = styled.View `
+const ChildrenViewContent = styled.SafeAreaView `
     width: 92%;
-    height: 79%;
+    height: 80%;
     background-color: white;
     border-radius: 10px;
 `

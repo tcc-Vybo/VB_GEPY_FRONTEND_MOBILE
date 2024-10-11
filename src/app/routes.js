@@ -42,12 +42,12 @@ export default function Routes() {
               size={23}
               color={'#6700B3'}
               style={{
-                borderRadius: Platform.OS === 'ios' ? 22 : 25,
+                borderRadius: Platform.OS === 'ios' && focused ? 25 : 24,
                 borderWidth: focused ? 2 : 1,
-                paddingTop: 10,
-                paddingRight: 11,
-                paddingBottom: 10,
-                paddingLeft: 11,
+                paddingTop: Platform.OS === 'ios' && focused? 10 : 8,
+                paddingRight: Platform.OS === 'ios'? 11 : 7,
+                paddingBottom: Platform.OS === 'ios'? 11 : 8,
+                paddingLeft: Platform.OS === 'ios'? 11 : 10,
                 borderColor: '#6700b3',
               }}
             />
