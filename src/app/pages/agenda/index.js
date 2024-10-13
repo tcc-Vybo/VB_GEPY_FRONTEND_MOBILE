@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { StyleSheet } from "react-native";
 import UserHeader from "../../components/userHeader";
 import {
@@ -14,14 +14,27 @@ import axios from "axios";
 export default function Agenda() {
   const focused = useIsFocused();
 
+  const [stateMessageArray, setStateMessageArray] = useState([])
+
   const handleGetMessages = () => {
     const urlGetMessages = `https://vb-gepy-backend-web.onrender.com/recado-turma`
-
+    const tempArray = []
     axios({
       method: "get",
       url: urlGetMessages,
-    }).then(function (response) {
-      console.log(response.data);
+    }).then((response)  => {
+      response.data.map((items, index) => {
+        tempArray.push({
+          id: response.data[index].id,
+          date: response.data[index].data,
+          title: response.data[index].titulo,
+          sender: response.data[index].remetente.nomeCompleto,
+          description: response.data[index].descricao,
+        })
+      })
+      
+      setStateMessageArray(tempArray)
+      console.log(stateMessageArray)
     });
     
   }
@@ -31,10 +44,6 @@ export default function Agenda() {
       handleGetMessages()
     }
   }
-
-  const testFunction = () => {
-    console.log("CHAMOU!");
-  };
 
   useEffect(() => {
     isCurrtentFocusedValidation();
@@ -77,7 +86,7 @@ export default function Agenda() {
       <ParentViewContent>
         <ChildrenViewContent style={styles.boxWithShadow}>
           <ChildrenViewContentFlatList
-            data={testArray}
+            data={stateMessageArray}
             keyExtractor={(item) => item.id.toString()}
             renderItem={({ item }) => (
               <MessageCards
