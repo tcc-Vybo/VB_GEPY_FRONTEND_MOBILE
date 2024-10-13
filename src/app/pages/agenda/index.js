@@ -30,13 +30,15 @@ export default function Agenda() {
           title: response.data[index].titulo,
           sender: response.data[index].remetente.nomeCompleto,
           description: response.data[index].descricao,
+          status: response.data[index].status
         })
+
+        console.log(response.data[index].id)
       })
       
       setStateMessageArray(tempArray)
       console.log(stateMessageArray)
     });
-    
   }
 
   const isCurrtentFocusedValidation = () => {
@@ -48,37 +50,6 @@ export default function Agenda() {
   useEffect(() => {
     isCurrtentFocusedValidation();
   }, [focused]);
-
-  const testArray = [
-    {
-      id: 1,
-      date: 23,
-      title: "Prova",
-      description: "No dia marcado na mensagem será realizada uma prova",
-      sender: "Gustavo Henrique",
-    },
-    {
-      id: 2,
-      date: 24,
-      title: "Prova",
-      description: "No dia marcado na mensagem será realizada uma prova",
-      sender: "Gustavo Henrique",
-    },
-    {
-      id: 3,
-      date: 25,
-      title: "Prova",
-      description: "No dia marcado na mensagem será realizada uma prova",
-      sender: "Gustavo Henrique",
-    },
-    {
-      id: 4,
-      date: 25,
-      title: "Prova",
-      description: "No dia marcado na mensagem será realizada uma prova",
-      sender: "Gustavo Henrique",
-    },
-  ];
 
   return (
     <ParentView>

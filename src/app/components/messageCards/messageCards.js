@@ -23,12 +23,41 @@ import {
   ModalBackgroundViewContentBottom,
 } from "./styles";
 
-export default function MessageCards({ date, title, description, sender }) {
+import axios from "axios";
+
+export default function MessageCards({ id, date, title, description, sender, status }) {
   const [statePressed, setStatePressed] = useState(false);
   const [stateCallModal, setStateCallModal] = useState(false);
+
+  const [stateMessageNewStatus, setStateMessageNewStatus] = useState(status)
+  const [stateCurrentId, setStateCurrentId] = useState(id)
   const closeModal = () => {
     setStateCallModal(false);
   };
+
+  const handleStatusMessage = () => {
+    const utlPutMessage = `https://vb-gepy-backend-web.onrender.com/recado-turma`
+    axios
+    .put(
+      utlPutMessage,
+      {
+        id: stateCurrentId,
+        titulo: "TESTE RECADO ALTERADO",
+        descricao: "TESTE DESCRIÇÃO RECADO",
+        data: "26",
+        hora: "18",
+        remetente: {
+            "id": 1
+        },
+        destinatario: {
+            "id": 1
+        },
+        status: stateMessageNewStatus
+      },
+    ).then((response)  => {
+      console.log(response.data)
+    });
+  }
   return (
     <ParentTouchableOpacity
       style={styles.boxWithShadow}
@@ -71,6 +100,9 @@ export default function MessageCards({ date, title, description, sender }) {
                 onPress={() => {
                   closeModal();
                   setStatePressed(true);
+                  setStateCurrentId(id)
+                  setStateMessageNewStatus('RECEBIDO')
+                  handleStatusMessage()
                 }}
               >
                 <ModalBackgroundViewContentText>
