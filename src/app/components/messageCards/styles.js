@@ -17,16 +17,19 @@ const ParentTouchableOpacityContent = styled.View`
   border-radius: 10px;
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  align-items: center
 `
 
 const ParentTouchableOpacityContentLeft = styled.View`
-  width: 30%;
-  height: 100%;
+  width: 27%;
+  height: 90%;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: white;
 `
 
 const ParentTouchableOpacityContentRight = styled.View`
@@ -42,7 +45,7 @@ const ParentTouchableOpacityContentRightUp = styled.View`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-left: ${Platform.OS === 'ios' ? 0 : -6}%;
+  margin-left: ${Platform.OS === 'ios' ? 0 : -2}%;
 `
 
 const ParentTouchableOpacityContentRightDown = styled.View`
@@ -55,7 +58,9 @@ const ParentTouchableOpacityContentRightDown = styled.View`
 `
 
 const ParentTouchableOpacityContentContentText = styled.Text`
-  font-size: ${Platform.OS === 'ios' ? 16 : 12}px;
+  font-size: ${Platform.OS === 'ios' ? 14 : 12}px;
+  font-style: italic;
+  text-decoration: underline;
 `;
 
 const ParentTouchableOpacityContentContentTitleDateText = styled.Text`
@@ -63,13 +68,14 @@ const ParentTouchableOpacityContentContentTitleDateText = styled.Text`
   font-weight: bold;
 `
 const ParentTouchableOpacityContentContentTitleNameText = styled.Text`
-  font-size: ${Platform.OS === 'ios' ? 16 : 16}px;
+  font-size: ${Platform.OS === 'ios' ? 18 : 14}px;
   font-weight: bold;
 `
 
 const ParentTouchableOpacitySide = styled.View`
   height: 100%;
-  width: 5%;
+  width: 5%; 
+  margin-right: ${Platform.OS === 'ios' ? -3 : -3}%;;
   background-color: #f5e61d;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;

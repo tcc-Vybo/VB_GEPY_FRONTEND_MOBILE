@@ -39,9 +39,8 @@ export default function MessageCards({
   sender,
   sender_ID,
   recipient_ID,
-  status,
+  currentStatus,
 }) {
-  const [statePressed, setStatePressed] = useState(false);
   const [stateCallModal, setStateCallModal] = useState(false);
 
   const [stateCurrentId, setStateCurrentId] = useState(id);
@@ -53,13 +52,17 @@ export default function MessageCards({
   const [stateCurrentSender_ID, setStateCurrentSender_ID] = useState(sender_ID);
   const [stateCurrentRecipient_ID, setStateCurrentRecipient_ID] =
     useState(recipient_ID);
-  const [stateMessageNewStatus, setStateMessageNewStatus] = useState(status);
+
+  const [stateApiResponse, setStateApiResponse] = useState('')
+
+  
+
 
   const closeModal = () => {
     setStateCallModal(false);
   };
 
-  const handleStatusMessage = () => {
+  const handleStatusMessage = (status) => {
     const utlPutMessage = `https://vb-gepy-backend-web.onrender.com/recado-turma`;
     axios
       .put(utlPutMessage, {
@@ -74,10 +77,11 @@ export default function MessageCards({
         destinatario: {
           id: stateCurrentRecipient_ID,
         },
-        status: stateMessageNewStatus,
+        status: status,
       })
       .then((response) => {
-        console.log(response.data);
+        setStateApiResponse(response.data)
+        console.log(stateApiResponse);
       });
   };
   return (
@@ -128,9 +132,7 @@ export default function MessageCards({
               <ModalBackgroundViewContentTouchableOpacityConfirm
                 onPress={() => {
                   closeModal();
-                  setStatePressed(true);
-                  setStateMessageNewStatus("RECEBIDO");
-                  handleStatusMessage();
+                  handleStatusMessage("RECEBIDO")
                 }}
               >
                 <ModalBackgroundViewContentText>
@@ -140,7 +142,7 @@ export default function MessageCards({
               <ModalBackgroundViewContentTouchableOpacityCancel
                 onPress={() => {
                   closeModal();
-                  setStatePressed(false);
+                  handleStatusMessage("VIZUALIZADO")
                 }}
               >
                 <ModalBackgroundViewContentText>
@@ -171,10 +173,9 @@ export default function MessageCards({
         </ParentTouchableOpacityContentRight>
 
         <ParentTouchableOpacitySide
-        style={[statePressed && styles.buttonPressed]}
-      />
+          style={[currentStatus === 'RECEBIDO' && styles.buttonPressed]}
+        />
       </ParentTouchableOpacityContent>
-      
     </ParentTouchableOpacity>
   );
 }

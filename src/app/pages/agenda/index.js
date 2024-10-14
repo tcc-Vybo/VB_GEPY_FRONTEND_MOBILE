@@ -72,8 +72,12 @@ export default function Agenda() {
                 sender={item.sender}
                 sender_ID={item.sender_id}
                 recipient_ID={item.recipient_id}
+                currentStatus={item.status}
               />
             )}
+            showsVerticalScrollIndicator={false}
+            refreshing={stateMessageArray ? false : true}
+            onRefresh={() => handleGetMessages()}
           />
         </ChildrenViewContent>
       </ParentViewContent>
