@@ -11,10 +11,65 @@ const ParentTouchableOpacity = styled.TouchableOpacity`
   border-radius: 10px;
 `;
 
+const ParentTouchableOpacityContent = styled.View`
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+`
+
+const ParentTouchableOpacityContentLeft = styled.View`
+  width: 30%;
+  height: 100%;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`
+
+const ParentTouchableOpacityContentRight = styled.View`
+  width: 65%;
+  height: 100%;
+  border-radius: 10px;
+`
+
+const ParentTouchableOpacityContentRightUp = styled.View`
+  width: 100%;
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-left: ${Platform.OS === 'ios' ? 0 : -6}%;
+`
+
+const ParentTouchableOpacityContentRightDown = styled.View`
+  width: 100%;
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`
+
+const ParentTouchableOpacityContentContentText = styled.Text`
+  font-size: ${Platform.OS === 'ios' ? 16 : 12}px;
+`;
+
+const ParentTouchableOpacityContentContentTitleDateText = styled.Text`
+  font-size: ${Platform.OS === 'ios' ? 55 : 40}px;
+  font-weight: bold;
+`
+const ParentTouchableOpacityContentContentTitleNameText = styled.Text`
+  font-size: ${Platform.OS === 'ios' ? 16 : 16}px;
+  font-weight: bold;
+`
+
 const ParentTouchableOpacitySide = styled.View`
   height: 100%;
   width: 5%;
-  margin-left: 95%;
   background-color: #f5e61d;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
@@ -35,8 +90,8 @@ if (Platform.OS === 'ios'){
 }
 
 const ModalBackgroundViewContent = styled.View`
-  width: ${Platform.OS === 'ios' ? 80 : 93}%;
-  height: ${Platform.OS === 'ios' ? 40 : 50}%;
+  width: ${Platform.OS === 'ios' ? 90 : 90}%;
+  height: ${Platform.OS === 'ios' ? 45 : 50}%;
   background-color: white;
   border-radius: 10px;
   display: flex;
@@ -116,11 +171,11 @@ const ModalBackgroundViewContentTitleDateText = styled.Text`
   font-weight: bold;
 `
 const ModalBackgroundViewContentTitleNameText = styled.Text`
-  font-size: ${Platform.OS === 'ios' ? 20 : 20}px;
+  font-size: ${Platform.OS === 'ios' ? 16 : 16}px;
   font-weight: bold;
 `
 const ModalBackgroundViewContentTitleSenderText = styled.Text`
-  font-size: ${Platform.OS === 'ios' ? 20 : 20}px;
+  font-size: ${Platform.OS === 'ios' ? 16 : 16}px;
 `
 const  ModalBackgroundViewContentDescriptionText = styled.Text`
   font-size: ${Platform.OS === 'ios' ? 16 : 16}px;
@@ -152,6 +207,14 @@ const ModalBackgroundViewContentTouchableOpacityCancel = styled.TouchableOpacity
 
 export {
   ParentTouchableOpacity,
+  ParentTouchableOpacityContent,    
+  ParentTouchableOpacityContentLeft,
+  ParentTouchableOpacityContentRight,
+  ParentTouchableOpacityContentRightUp,
+  ParentTouchableOpacityContentRightDown,
+  ParentTouchableOpacityContentContentText,
+  ParentTouchableOpacityContentContentTitleDateText,
+  ParentTouchableOpacityContentContentTitleNameText,
   ParentTouchableOpacitySide,
   ModalBackgroundView,
   ModalBackgroundViewContent,

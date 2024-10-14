@@ -1,10 +1,15 @@
 import React, { useState } from "react";
-import {
-  StyleSheet,
-  Modal,
-} from "react-native";
+import { StyleSheet, Modal } from "react-native";
 import {
   ParentTouchableOpacity,
+  ParentTouchableOpacityContent,
+  ParentTouchableOpacityContentLeft,
+  ParentTouchableOpacityContentRight,
+  ParentTouchableOpacityContentRightUp,
+  ParentTouchableOpacityContentRightDown,
+  ParentTouchableOpacityContentContentText,
+  ParentTouchableOpacityContentContentTitleDateText,
+  ParentTouchableOpacityContentContentTitleNameText,
   ParentTouchableOpacitySide,
   ModalBackgroundView,
   ModalBackgroundViewContent,
@@ -25,44 +30,68 @@ import {
 
 import axios from "axios";
 
-export default function MessageCards({ id, date, title, description, sender, status }) {
+export default function MessageCards({
+  id,
+  date,
+  hour,
+  title,
+  description,
+  sender,
+  sender_ID,
+  recipient_ID,
+  status,
+}) {
   const [statePressed, setStatePressed] = useState(false);
   const [stateCallModal, setStateCallModal] = useState(false);
 
-  const [stateMessageNewStatus, setStateMessageNewStatus] = useState(status)
-  const [stateCurrentId, setStateCurrentId] = useState(id)
+  const [stateCurrentId, setStateCurrentId] = useState(id);
+  const [stateCurrentDate, setStateCurrentDate] = useState(date);
+  const [stateCurrentHour, setStateCurrentHour] = useState(hour);
+  const [stateCurrentTitle, setStateCurrentTitle] = useState(title);
+  const [stateCurrentDescription, setStateCurrentDescription] =
+    useState(description);
+  const [stateCurrentSender_ID, setStateCurrentSender_ID] = useState(sender_ID);
+  const [stateCurrentRecipient_ID, setStateCurrentRecipient_ID] =
+    useState(recipient_ID);
+  const [stateMessageNewStatus, setStateMessageNewStatus] = useState(status);
+
   const closeModal = () => {
     setStateCallModal(false);
   };
 
   const handleStatusMessage = () => {
-    const utlPutMessage = `https://vb-gepy-backend-web.onrender.com/recado-turma`
+    const utlPutMessage = `https://vb-gepy-backend-web.onrender.com/recado-turma`;
     axios
-    .put(
-      utlPutMessage,
-      {
+      .put(utlPutMessage, {
         id: stateCurrentId,
-        titulo: "TESTE RECADO ALTERADO",
-        descricao: "TESTE DESCRIÇÃO RECADO",
-        data: "26",
-        hora: "18",
+        titulo: stateCurrentTitle,
+        descricao: stateCurrentDescription,
+        data: stateCurrentDate,
+        hora: stateCurrentHour,
         remetente: {
-            "id": 1
+          id: stateCurrentSender_ID,
         },
         destinatario: {
-            "id": 1
+          id: stateCurrentRecipient_ID,
         },
-        status: stateMessageNewStatus
-      },
-    ).then((response)  => {
-      console.log(response.data)
-    });
-  }
+        status: stateMessageNewStatus,
+      })
+      .then((response) => {
+        console.log(response.data);
+      });
+  };
   return (
     <ParentTouchableOpacity
       style={styles.boxWithShadow}
       onPress={() => {
         setStateCallModal(true);
+        setStateCurrentId(id);
+        setStateCurrentDate(date);
+        setStateCurrentHour(hour);
+        setStateCurrentTitle(title);
+        setStateCurrentDescription(description);
+        setStateCurrentSender_ID(sender_ID);
+        setStateCurrentRecipient_ID(recipient_ID);
       }}
     >
       <Modal
@@ -100,9 +129,8 @@ export default function MessageCards({ id, date, title, description, sender, sta
                 onPress={() => {
                   closeModal();
                   setStatePressed(true);
-                  setStateCurrentId(id)
-                  setStateMessageNewStatus('RECEBIDO')
-                  handleStatusMessage()
+                  setStateMessageNewStatus("RECEBIDO");
+                  handleStatusMessage();
                 }}
               >
                 <ModalBackgroundViewContentText>
@@ -123,9 +151,30 @@ export default function MessageCards({ id, date, title, description, sender, sta
           </ModalBackgroundViewContent>
         </ModalBackgroundView>
       </Modal>
-      <ParentTouchableOpacitySide
+      <ParentTouchableOpacityContent>
+        <ParentTouchableOpacityContentLeft>
+          <ParentTouchableOpacityContentContentTitleDateText>
+            {date}
+          </ParentTouchableOpacityContentContentTitleDateText>
+        </ParentTouchableOpacityContentLeft>
+        <ParentTouchableOpacityContentRight>
+          <ParentTouchableOpacityContentRightUp>
+            <ParentTouchableOpacityContentContentTitleNameText>
+              {title}
+            </ParentTouchableOpacityContentContentTitleNameText>
+          </ParentTouchableOpacityContentRightUp>
+          <ParentTouchableOpacityContentRightDown>
+            <ParentTouchableOpacityContentContentText>
+              {id ? "Clique para expandir recado ->" : "Erro"}
+            </ParentTouchableOpacityContentContentText>
+          </ParentTouchableOpacityContentRightDown>
+        </ParentTouchableOpacityContentRight>
+
+        <ParentTouchableOpacitySide
         style={[statePressed && styles.buttonPressed]}
       />
+      </ParentTouchableOpacityContent>
+      
     </ParentTouchableOpacity>
   );
 }
@@ -136,7 +185,7 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 0 },
     shadowOpacity: 0.5,
     shadowRadius: 5,
-    elevation: 7
+    elevation: 7,
   },
   buttonPressed: {
     backgroundColor: "#6f09ba",

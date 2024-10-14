@@ -27,13 +27,16 @@ export default function Agenda() {
         tempArray.push({
           id: response.data[index].id,
           date: response.data[index].data,
+          hour: response.data[index].hora,
           title: response.data[index].titulo,
           sender: response.data[index].remetente.nomeCompleto,
+          sender_id: response.data[index].remetente.id,
+          recipient_id: response.data[index].destinatario.id,
           description: response.data[index].descricao,
           status: response.data[index].status
         })
 
-        console.log(response.data[index].id)
+        console.log(response.data[index].destinatario.id)
       })
       
       setStateMessageArray(tempArray)
@@ -63,9 +66,12 @@ export default function Agenda() {
               <MessageCards
                 id={item.id}
                 date={item.date}
+                hour={item.hour}
                 title={item.title}
                 description={item.description}
                 sender={item.sender}
+                sender_ID={item.sender_id}
+                recipient_ID={item.recipient_id}
               />
             )}
           />
