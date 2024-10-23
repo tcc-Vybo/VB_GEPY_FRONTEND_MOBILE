@@ -1,24 +1,31 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet } from 'react-native';
 import UserHeader from '../../components/userHeader';
+
+import { ParentView, ParentViewContent, ChildrenViewContent } from "./styles"
 
 export default function Boletim() {
   return (
-    <View style={styles.container}>
-      <Text>Página do Boletim</Text>
+    <ParentView>
       <UserHeader />
+      <ParentViewContent>
+        <ChildrenViewContent style={styles.boxWithShadow}>
+          
+        </ChildrenViewContent>
+      </ParentViewContent>
+      
       <StatusBar style="auto" />
-    </View>
+    </ParentView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#D7A1FF',
-    paddingBottom: 20,
+  boxWithShadow: {
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 0 },
+    shadowOpacity: 0.5,
+    shadowRadius: 5,
+    elevation: 7
   },
 });

@@ -15,7 +15,7 @@ const ParentViewContent = styled.View `
     align-items: center;
 `
 const ChildrenViewContent = styled.SafeAreaView `
-    width: 92%;
+    width: 95%;
     height: 80%;
     background-color: white;
     border-radius: 10px;
