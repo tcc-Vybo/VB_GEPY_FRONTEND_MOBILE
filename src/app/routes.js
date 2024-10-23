@@ -1,5 +1,5 @@
 import { Ionicons } from '@expo/vector-icons';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createBottomTabNavigator, } from '@react-navigation/bottom-tabs';
 import Agenda from './pages/agenda';
 import Boletim from './pages/boletim';
 import News from './pages/news';
@@ -8,6 +8,7 @@ import { Platform } from 'react-native';
 const Tab = createBottomTabNavigator();
 
 export default function Routes() {
+
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
@@ -26,65 +27,52 @@ export default function Routes() {
         tabBarIcon: ({ focused }) => {
           let iconName;
 
-          if (route.name === 'news') {
+          if (route.name === 'News') {
             iconName = focused ? 'newspaper' : 'newspaper-outline';
-          } else if (route.name === 'agenda') {
+          } else if (route.name === 'Agenda') {
             iconName = focused ? 'calendar' : 'calendar-outline';
-          } else if (route.name === 'boletim') {
+          } else if (route.name === 'Boletim') {
             iconName = focused ? 'reader' : 'reader-outline';
-          } else if (route.name === 'tarefas') {
-            iconName = focused ? 'clipboard' : 'clipboard-outline';
           }
 
           return (
             <Ionicons
               name={iconName}
-              size={23}
-              color={'#6700B3'}
-              style={{
-                borderRadius: Platform.OS === 'ios' ? 22 : 25,
-                borderWidth: focused ? 2 : 1,
-                paddingTop: 10,
-                paddingRight: 11,
-                paddingBottom: 10,
-                paddingLeft: 11,
-                borderColor: '#6700b3',
-              }}
+              size={28}
+              color={focused ? '#6700B3' : '#8300E4'}
             />
           );
         },
-        tabBarLabelStyle: {
-          color: '#6700B3',
-        },
+        tabBarLabelStyle: ({ 
+          fontWeight: 'bold', 
+          fontSize: 15
+        }),
         tabBarIconStyle: {
           alignItems: 'center',
           justifyContent: 'center'
         },
       })}
-      initialRouteName="news"
+      initialRouteName="boletim"
     >
       <Tab.Screen
-        name="news"
+        name="News"
         component={News}
         options={{
           headerShown: false,
-          tabBarLabelStyle: { fontWeight: 'bold' },
         }}
       />
       <Tab.Screen
-        name="agenda"
+        name="Agenda"
         component={Agenda}
         options={{
           headerShown: false,
-          tabBarLabelStyle: { fontWeight: 'bold' },
         }}
       />
       <Tab.Screen
-        name="boletim"
+        name="Boletim"
         component={Boletim}
         options={{
           headerShown: false,
-          tabBarLabelStyle: { fontWeight: 'bold' },
         }}
       />
     </Tab.Navigator>
