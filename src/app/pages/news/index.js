@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    backgroundColor: '#D7A1FF',
+    backgroundColor: '#8300E4',
     paddingBottom: 20,
   },
   scrollView: {

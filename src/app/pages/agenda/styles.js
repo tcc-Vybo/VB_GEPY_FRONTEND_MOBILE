@@ -3,7 +3,7 @@ import styled from "styled-components/native";
 const ParentView = styled.View `
     height: 100%;
     width: 100%;
-    background-color: #D7A1FF;
+    background-color: #8300E4;
     gap: 10px;
 `
 
